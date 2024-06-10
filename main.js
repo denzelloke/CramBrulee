@@ -17,6 +17,7 @@ app.get("/", (req, res) => {
 });
 app.post("/login", async (req, res) => {
   //fetch user input for name and pw. if match in database then allow to render homepage
+ 
   try {
     const check = await collection.findOne({ name: req.body.name });
     if (check.password === req.body.password) {
