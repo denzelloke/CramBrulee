@@ -54,6 +54,7 @@ function load() {
     month: "numeric",
     day: "numeric",
   });
+
   const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
 
   document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(
@@ -62,6 +63,18 @@ function load() {
   )} ${year}`;
 
   calendar.innerHTML = "";
+
+  const currDateString = dt.toLocaleDateString("en-uk", {
+    weekday: "long",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+
+  const currentDOTW = weekdays.indexOf(currDateString.split(", ")[0]);
+
+  console.log(currentDOTW);
+  console.log(day);
 
   for (let i = 1; i <= 7; i++) {
     const daySquare = document.createElement("div");
