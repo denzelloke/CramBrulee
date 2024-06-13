@@ -38,31 +38,12 @@ function load() {
   const dt = new Date();
 
   if (nav !== 0) {
-    dt.setMonth(new Date().getMonth() + nav);
+    dt.setDate(new Date().getDate() + 7 * nav);
   }
 
   const day = dt.getDate();
   const month = dt.getMonth();
   const year = dt.getFullYear();
-
-  const firstDayOfMonth = new Date(year, month, 1);
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
-  const dateString = firstDayOfMonth.toLocaleDateString("en-us", {
-    weekday: "long",
-    year: "numeric",
-    month: "numeric",
-    day: "numeric",
-  });
-
-  const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
-
-  document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(
-    "en-us",
-    { month: "long" }
-  )} ${year}`;
-
-  calendar.innerHTML = "";
 
   const currDateString = dt.toLocaleDateString("en-uk", {
     weekday: "long",
@@ -71,36 +52,38 @@ function load() {
     day: "numeric",
   });
 
-  const currentDOTW = weekdays.indexOf(currDateString.split(", ")[0]);
+  const currDOTW = weekdays.indexOf(currDateString.split(", ")[0]) + 1;
 
-  console.log(currentDOTW);
-  console.log(day);
+  console.log("DOTW:", currDOTW);
+  console.log("date:", day);
 
-  for (let i = 1; i <= 7; i++) {
+  const monDate = day - currDOTW + 1;
+  console.log("mondate:", monDate);
+
+  document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(
+    "en-uk",
+    { month: "long" }
+  )} ${year}`;
+
+  calendar.innerHTML = "";
+
+  for (let i = 0; i < 7; i++) {
     const daySquare = document.createElement("div");
     daySquare.classList.add("day");
+    daySquare.innerText = monDate + i;
 
-    const dayString = `${month + 1}/${i - paddingDays}/${year}`;
+    const dayString = `${month + 1}/${monDate + i}/${year}`;
 
-    if (i > paddingDays) {
-      daySquare.innerText = i - paddingDays;
-      const eventForDay = events.find((e) => e.date === dayString);
+    const eventForDay = events.find((e) => e.date === dayString);
 
-      if (i - paddingDays === day && nav === 0) {
-        daySquare.id = "currentDay";
-      }
-
-      if (eventForDay) {
-        const eventDiv = document.createElement("div");
-        eventDiv.classList.add("event");
-        eventDiv.innerText = eventForDay.title;
-        daySquare.appendChild(eventDiv);
-      }
-
-      daySquare.addEventListener("click", () => openModal(dayString));
-    } else {
-      daySquare.classList.add("padding");
+    daySquare.addEventListener("click", () => openModal(dayString));
+    if (eventForDay) {
+      const eventDiv = document.createElement("div");
+      eventDiv.classList.add("event");
+      eventDiv.innerText = eventForDay.title;
+      daySquare.appendChild(eventDiv);
     }
+    daySquare.addEventListener("click", () => openModal(dayString));
 
     calendar.appendChild(daySquare);
   }

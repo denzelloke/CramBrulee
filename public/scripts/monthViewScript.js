@@ -54,7 +54,7 @@ function load() {
     month: "numeric",
     day: "numeric",
   });
-  
+
   const paddingDays = weekdays.indexOf(dateString.split(", ")[0]);
 
   document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(

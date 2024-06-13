@@ -45,12 +45,20 @@ function load() {
   const year = dt.getFullYear();
 
   const dayString = `${month + 1}/${day}/${year}`;
-  console.log(dayString);
-
-  document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(
-    "en-us",
+  
+  const currDateString = dt.toLocaleDateString("en-uk", {
+    weekday: "long",
+    year: "numeric",
+    month: "numeric",
+    day: "numeric",
+  });
+  
+  const DOTWindex = weekdays.indexOf(currDateString.split(", ")[0]);
+  const DOTW = weekdays[DOTWindex];
+    document.getElementById("monthDisplay").innerText = `${DOTW}, ${day} ${dt.toLocaleDateString(
+    "en-uk",
     { month: "long" }
-  )} ${day}, ${year}`;
+  )} ${year}`;
 
   calendar.innerHTML = "";
 
