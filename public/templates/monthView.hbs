@@ -8,16 +8,19 @@
   </head>
 
   <body>
-    <div class="dropdown">
-      <button>View</button>
-      <div class="content">
-        <a href="">Day</a>
-        <a href="">Week</a>
-        <a href="">Month</a>
-      </div>
-    </div>
 
     <div id="container">
+
+      <div class="dropdown">
+        <button>Month View</button>
+        <nav>
+          <div class="content">
+            <li><a href="/dayView">Day View</a></li>
+            <li><a href="/weekView">Week View</a></li>
+          </div>
+        </nav>
+      </div>
+
       <div id="header">
         <div id="monthDisplay"></div>
         <div>
@@ -59,6 +62,6 @@
 
     <div id="modalBackDrop"></div>
 
-    <script src="../scripts/calendarScript.js"></script>
+    <script src="../scripts/monthViewScript.js"></script>
   </body>
 </html>

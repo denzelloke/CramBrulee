@@ -1,12 +1,16 @@
 .dropdown{
   display: inline-block;
+  position: relative;
 }
 .dropdown button{
-  background-color: rgba(3, 2, 2, 0.521);
+  background-color: rgb(254, 213, 141);
   color: rgb(0, 0, 0);
   padding: 10px 15px;
   border: black;
   cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .dropdown a{
@@ -14,23 +18,28 @@
   color: black;
   text-decoration: none;
   padding: 10px 15px;
+  
 }
 
 .dropdown .content {
   display: none;
-  background-color: rgba(254, 213, 141, 0.521);
-  min-width: 100px;
+  position: absolute;
+  background-color: rgb(254, 213, 141);
+  min-width: 150px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.285);
+  list-style-type: none;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .dropdown:hover .content {
   display: block;
 }
 .dropdown:hover button {
-  background-color: rgb(254, 213, 141);
+  background-color: rgb(240, 185, 88);
 }
 .dropdown a:hover{
-  background-color: rgb(254, 213, 141);
+  background-color: rgb(240, 185, 88);
 }
 
 body {
