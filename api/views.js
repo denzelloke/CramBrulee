@@ -21,6 +21,7 @@ const renderTemplate = (templateName, data) => {
 export default async (req, res) => {
   try {
     const viewName = req.url.slice(1) || 'login';
+    console.log(`Requested template: ${viewName}`); // Log the requested template
     const html = await renderTemplate(viewName, {});
     res.status(200).send(html);
   } catch (error) {
