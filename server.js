@@ -2,9 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const hbs = require("hbs");
-const collection = require("./public/scripts/serverScript"); //tells code where to find "serverScript"
+const collection = require("./public/scripts/serverScript"); // Adjust path as needed
 
-const templatePath = path.join(__dirname, "./public/templates"); //tells code where to find "templates"
+const templatePath = path.join(__dirname, "./public/templates");
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(express.json());
@@ -15,13 +15,12 @@ app.use(express.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
   res.render("login");
 });
-app.post("/login", async (req, res) => {
-  //fetch user input for name and pw. if match in database then allow to render homepage
 
+app.post("/login", async (req, res) => {
   try {
     const check = await collection.findOne({ name: req.body.name });
-    if (check.password === req.body.password) {
-      res.render("monthView"); //redirect to home page
+    if (check && check.password === req.body.password) {
+      res.render("monthView"); // redirect to home page
     } else {
       res.send("username exists, incorrect password");
     }
@@ -33,16 +32,16 @@ app.post("/login", async (req, res) => {
 app.get("/signup", (req, res) => {
   res.render("signup");
 });
-// signup form that stores name and pw into database
+
 app.post("/signup", async (req, res) => {
   try {
     const data = {
-      name: req.body.name, //fetches user input
+      name: req.body.name,
       password: req.body.password,
     };
 
-    await collection.insertMany([data]); //creates a data???
-    res.render("login"); //redirect to login page
+    await collection.insertMany([data]);
+    res.render("login"); // redirect to login page
   } catch (error) {
     console.error("Error during signup:", error);
     res.status(500).send("unknown error");
@@ -52,9 +51,11 @@ app.post("/signup", async (req, res) => {
 app.get("/dayView", (req, res) => {
   res.render("dayView");
 });
+
 app.get("/weekView", (req, res) => {
   res.render("weekView");
 });
+
 app.get("/monthView", (req, res) => {
   res.render("monthView");
 });
@@ -62,3 +63,7 @@ app.get("/monthView", (req, res) => {
 app.listen(3000, () => {
   console.log("port connected");
 });
+
+
+// Export the app to be used as a serverless function
+module.exports = app;
