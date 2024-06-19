@@ -18,7 +18,7 @@
     {
       "src": "/(.*)",
       "dest": "/api/views.js"
-    }
+    },
       {
       "src": "/api/(.*)",
       "dest": "/api/$1"
