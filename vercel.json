@@ -8,20 +8,20 @@
   ],
   "routes": [
     {
-      "src": "api/login",
-      "dest": "api/login.js"
+      "src": "/api/login",
+      "dest": "/api/login.js"
     },
     {
-      "src": "api/signup",
-      "dest": "api/signup.js"
+      "src": "/api/signup",
+      "dest": "/api/signup.js"
     },
     {
-      "src": "(.*)",
-      "dest": "api/views.js"
+      "src": "/(.*)",
+      "dest": "/api/views.js"
     },
     {
-      "src": "api/(.*)",
-      "dest": "api/$1"
+      "src": "/api/(.*)",
+      "dest": "/api/$1"
     }
   ]
 }
