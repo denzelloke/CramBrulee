@@ -6,9 +6,11 @@ const app = express();
 const templatePath = path.join(__dirname, '../public/templates');
 
 // Configure Handlebars
-app.engine('hbs', exphbs({ extname: 'hbs', defaultLayout: false, layoutsDir: templatePath }));
+app.engine('hbs', exphbs.engine({ extname: 'hbs', defaultLayout: false, layoutsDir: templatePath }));
 app.set('view engine', 'hbs');
 app.set('views', templatePath);
+
+app.use(express.static(path.join(__dirname, '../public')));
 
 const renderTemplate = (templateName, data) => {
   return new Promise((resolve, reject) => {
@@ -48,3 +50,5 @@ if (require.main === module) {
     console.log(`Server is running on port ${PORT}`);
   });
 }
+
+module.exports = app;
