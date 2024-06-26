@@ -26,6 +26,6 @@ export default async (req, res) => {
     res.status(200).send(html);
   } catch (error) {
     console.error('Error Details:', error);
-    res.status(500).send('Error rendering template:' ${error.message});
+    res.status(500).send('Error rendering template:', ${error.message});
   }
 };
