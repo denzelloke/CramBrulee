@@ -22,7 +22,7 @@ const renderTemplate = (templateName, data) => {
   });
 };
 
-export default async (req, res) => {
+app.get('*', async (req, res) => {
   try {
     const viewName = req.url.slice(1).split('?')[0] || 'login'; // Ignore query parameters
     console.log(`Requested template: ${viewName}`); // Log the requested template
@@ -39,7 +39,7 @@ export default async (req, res) => {
     console.error('Error Details:', error);
     res.status(500).send('Error rendering template');
   }
-};
+});
 
 // Listen on a port when running locally
 if (require.main === module) {
