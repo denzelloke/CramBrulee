@@ -25,6 +25,7 @@ export default async (req, res) => {
     const html = await renderTemplate(viewName, {});
     res.status(200).send(html);
   } catch (error) {
-    res.status(500).send('Error rendering template');
+    console.error('Error Details:', error);
+    res.status(500).send(Error rendering template: ${error.message});
   }
 };
