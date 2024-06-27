@@ -5,7 +5,10 @@ export default async (req, res) => {
     try {
       const check = await collection.findOne({ name: req.body.name });
       if (check.password === req.body.password) {
-        res.redirect('/monthView');
+        res.writeHead(302, {
+          Location: '/monthView'
+        });
+        res.end();
       } else {
         res.status(401).send('username exists, incorrect password');
       }
