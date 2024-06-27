@@ -22,15 +22,15 @@
     {
       "src": "/api/(.*)",
       "dest": "/api/$1"
-    }
+    },
     {
       "src": "/monthView",
       "dest": "/api/views.js" 
-    }
+    },
     {
       "src": "/dayView",
       "dest": "/api/views.js" 
-    }
+    },
     {
       "src": "/mweekView",
       "dest": "/api/views.js" 
