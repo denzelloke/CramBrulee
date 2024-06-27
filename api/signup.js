@@ -9,7 +9,7 @@ export default async (req, res) => {
       };
 
       await collection.insertMany([data]);
-      res.redirect('/login');
+      res.redirect('/api/login');
     } catch (error) {
       console.error('Error during signup:', error);
       res.status(500).send('unknown error');
