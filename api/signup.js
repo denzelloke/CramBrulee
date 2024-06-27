@@ -9,7 +9,10 @@ export default async (req, res) => {
       };
 
       await collection.insertMany([data]);
-      res.redirect('/login');
+      res.writeHead(302, {
+        Location: '/login'
+      });
+      res.end();
     } catch (error) {
       console.error('Error during signup:', error);
       res.status(500).send('unknown error');
