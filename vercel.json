@@ -16,7 +16,7 @@
       "dest": "/api/signup.js"
     },
     {
-      "src": "/api/(.*)",
+      "src": "/(.*)",
       "dest": "/api/views.js"
     },
     {
