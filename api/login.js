@@ -10,6 +10,7 @@ export default async (req, res) => {
         res.status(401).send('username exists, incorrect password');
       }
     } catch {
+      console.error('Error during login:', error);
       res.status(401).send('incorrect credentials');
     }
   } else {
