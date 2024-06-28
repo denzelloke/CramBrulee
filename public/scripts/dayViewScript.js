@@ -45,20 +45,21 @@ function load() {
   const year = dt.getFullYear();
 
   const dayString = `${month + 1}/${day}/${year}`;
-  
+
   const currDateString = dt.toLocaleDateString("en-uk", {
     weekday: "long",
     year: "numeric",
     month: "numeric",
     day: "numeric",
   });
-  
+
   const DOTWindex = weekdays.indexOf(currDateString.split(", ")[0]);
   const DOTW = weekdays[DOTWindex];
-    document.getElementById("monthDisplay").innerText = `${DOTW}, ${day} ${dt.toLocaleDateString(
-    "en-uk",
-    { month: "long" }
-  )} ${year}`;
+  document.getElementById(
+    "monthDisplay"
+  ).innerText = `${DOTW}, ${day} ${dt.toLocaleDateString("en-uk", {
+    month: "long",
+  })} ${year}`;
 
   calendar.innerHTML = "";
 
@@ -115,6 +116,11 @@ function deleteEvent() {
 function initButtons() {
   document.getElementById("nextButton").addEventListener("click", () => {
     nav++;
+    load();
+  });
+
+  document.getElementById("todayButton").addEventListener("click", () => {
+    nav = 0;
     load();
   });
 

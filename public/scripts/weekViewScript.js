@@ -53,11 +53,12 @@ function load() {
   });
 
   const currDOTW = weekdays.indexOf(currDateString.split(", ")[0]) + 1;
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  console.log("DOTW:", currDOTW);
-  console.log("date:", day);
+  console.log("daysInMonth:", daysInMonth);
+  console.log("month:", month + 1);
 
-  const monDate = day - currDOTW + 1;
+  monDate = day - currDOTW + 1;
   console.log("mondate:", monDate);
 
   document.getElementById("monthDisplay").innerText = `${dt.toLocaleDateString(
@@ -68,13 +69,29 @@ function load() {
   calendar.innerHTML = "";
 
   for (let i = 0; i < 7; i++) {
+    currDay = monDate + i;
+
+    if (currDay > daysInMonth) {
+      monDate = 1 - i;
+      currDay = monDate + i;
+    } //prevents overshooting
+
+    if (currDay <= 0) {
+      daysInPrevMonth = new Date(year, month, 0).getDate();
+      currDay = currDay + daysInPrevMonth;
+    } //prevents -ve dates
+
     const daySquare = document.createElement("div");
     daySquare.classList.add("day");
-    daySquare.innerText = monDate + i;
+    daySquare.innerText = currDay;
 
     const dayString = `${month + 1}/${monDate + i}/${year}`;
 
     const eventForDay = events.find((e) => e.date === dayString);
+
+    if (nav === 0 && monDate + i === day) {
+      daySquare.id = "currentDay";
+    }
 
     daySquare.addEventListener("click", () => openModal(dayString));
     if (eventForDay) {
@@ -124,6 +141,11 @@ function deleteEvent() {
 function initButtons() {
   document.getElementById("nextButton").addEventListener("click", () => {
     nav++;
+    load();
+  });
+
+  document.getElementById("todayButton").addEventListener("click", () => {
+    nav = 0;
     load();
   });
 

@@ -131,7 +131,10 @@ function initButtons() {
     nav++;
     load();
   });
-
+  document.getElementById("todayButton").addEventListener("click", () => {
+    nav = 0;
+    load();
+  });
   document.getElementById("backButton").addEventListener("click", () => {
     nav--;
     load();
