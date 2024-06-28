@@ -1,0 +1,7 @@
+node_modules
+.next
+out
+build
+!api/login.js
+!api/signup.js
+!api/views.js
