@@ -1,6 +1,7 @@
 .dropdown{
   display: inline-block;
   position: relative;
+  left: 135px;
 }
 .dropdown button{
   background-color: rgb(254, 213, 141);
@@ -15,14 +16,15 @@
 
 .dropdown a{
   display: block;
-  color: black;  text-decoration: none;
+  color: black;
+  text-decoration: none;
   padding: 10px 15px;
   
 }
 
 .dropdown .content {
   display: none;
-  position: absolute;
+  position: a;
   background-color: rgb(254, 213, 141);
   min-width: 150px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.285);
@@ -33,6 +35,8 @@
 
 .dropdown:hover .content {
   display: block;
+  position: absolute;
+ z-index: 9999;
 }
 .dropdown:hover button {
   background-color: rgb(240, 185, 88);
@@ -57,9 +61,7 @@ button {
   border-radius: 5px;
   color: white;
 }
-
 #header {
-  padding-left: 100px;
   padding: 10px;
   color: #d36c6c;
   font-size: 26px;
@@ -67,8 +69,17 @@ button {
   display: flex;
   justify-content: space-between;
 }
+
+ #monthDisplay {
+  position: relative;
+  left: 130px;
+}
 #header button {
   background-color:#92a1d1;
+  position: relative;
+  left: -100px;
+  top: 0px;
+  
 }
 
 /* anything more than 770px will wrap around, giving the grid effect*/
@@ -77,6 +88,7 @@ button {
 }
 #weekdays {
   padding-left: 150px;
+  padding-top: 0px;
   width: 100%;
   display: flex;
   color: #247BA0;
@@ -90,6 +102,7 @@ button {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+
 }
 
 
@@ -137,6 +150,7 @@ button {
 
 /* each day has a 100px grid with a 5px margin on each side = 110px. 7days = 770px */
 .day {
+  
   width: 100px;
   padding: 10px;
   height: 1050px;
