@@ -66,9 +66,18 @@ function load() {
   const daySquare = document.createElement("div");
   daySquare.classList.add("day");
 
+  /*
+  for (let i = 0; i < 24; i++) {
+    const hourLine = document.createElement("div");
+    hourLine.classList.add("hour-line");
+    hourLine.style.top = `${i * 40}px`;
+    daySquare.appendChild(hourLine);
+  }
+  */
+
   const eventForDay = events.find((e) => e.date === dayString);
 
-  daySquare.innerText = day;
+  //daySquare.innerText = day;
 
   if (eventForDay) {
     const eventDiv = document.createElement("div");

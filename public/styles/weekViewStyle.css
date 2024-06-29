@@ -12,13 +12,14 @@
   border-radius: 5px;
   text-align: center;
 }
+
 .dropdown a{
   display: block;
-  color: black;
-  text-decoration: none;
+  color: black;  text-decoration: none;
   padding: 10px 15px;
   
 }
+
 .dropdown .content {
   display: none;
   position: absolute;
@@ -29,6 +30,7 @@
   border-radius: 5px;
   text-align: center;
 }
+
 .dropdown:hover .content {
   display: block;
 }
@@ -38,7 +40,6 @@
 .dropdown a:hover{
   background-color: rgb(240, 185, 88);
 }
-
 
 body {
   display: flex;
@@ -57,8 +58,8 @@ button {
   color: white;
 }
 
-
 #header {
+  padding-left: 100px;
   padding: 10px;
   color: #d36c6c;
   font-size: 26px;
@@ -70,18 +71,18 @@ button {
   background-color:#92a1d1;
 }
 
-
 /* anything more than 770px will wrap around, giving the grid effect*/
 #container {
-  width: 770px; 
+  width: 1000px; 
 }
 #weekdays {
+  padding-left: 150px;
   width: 100%;
   display: flex;
   color: #247BA0;
 }
 #weekdays div {
-  width: 100px;
+  width: 90px;
   padding: 10px;
 }
 #calendar {
@@ -92,7 +93,6 @@ button {
 }
 
 
-
 #calendar-container {
   display: flex;
   width: 100%;
@@ -100,12 +100,12 @@ button {
 
 #hours-column {
   width: 150px;
-  height: 1000px;
+  height: 1050px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding-right: 10px;
-  padding-top: 10px;
+  padding-top: 50px;
   color: #d36c6c;
   font-size: 20px;
   font-family: sans-serif;
@@ -137,9 +137,9 @@ button {
 
 /* each day has a 100px grid with a 5px margin on each side = 110px. 7days = 770px */
 .day {
-  width: 1000px;
+  width: 100px;
   padding: 10px;
-  height: 1000px;
+  height: 1050px;
   cursor: pointer;
   box-sizing: border-box;
   background-color: white;
