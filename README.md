@@ -19,7 +19,16 @@ Level of Achievement: Project Gemini
 
 Project Scope: To create a Web App that displays Users' personalised calendars, and intuitively suggests timeslots for User to begin working on new tasks, based on factors like task urgency and calendar availability.
 
-## Prerequisites
+
+## Web Deployment (currently having database-related issues)
+
+https://vercel.com/timothys-projects-46c0d33d/crambrulee/9y1Hj1v8BUYkUSpv3LGfxp43t9PM
+
+
+## Local Deployment
+
+
+### Prerequisites
 
 
 Before you begin, ensure that your machine has the following software and dependencies downloaded
@@ -33,7 +42,7 @@ Before you begin, ensure that your machine has the following software and depend
 - **hbs**: Type into terminal "npm i hbs"
 
 
-## Installation
+### Installation
 
 
 To set up the project locally, clone the cramBrulee repository into your machine using the gitHub desktop app.
