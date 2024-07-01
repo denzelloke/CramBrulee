@@ -10,11 +10,13 @@ https://docs.google.com/document/d/1NJYrrDUmPWrZGAuYLO0DFdPRINOexmdeYmMg_YjxGRM/
 
 This app is intended to be a calendar app that intuitively helps you plan your tasks based on your calendar availability and task urgency.
 In milestone 1, we successfully created a Home Page, a Login form, and a Signup form.
+
 Currently, we have also created 3 different calendar views (Month, Day, Week) as well as the ability to add an event by day (see video).
 However, we are currently experiencing extensive issues regarding Vercel deployment, where only the login and signup pages are able to be displayed. We are working on a fix.
 We use MongoDB as a database to store information required for user authentication.
  
 Level of Achievement: Project Gemini
+
 Project Scope: To create a Web App that displays Users' personalised calendars, and intuitively suggests timeslots for User to begin working on new tasks, based on factors like task urgency and calendar availability.
 
 ## Prerequisites
