@@ -22,7 +22,7 @@ Project Scope: To create a Web App that displays Users' personalised calendars, 
 
 ## Web Deployment (currently having database-related issues)
 
-https://vercel.com/timothys-projects-46c0d33d/crambrulee/9y1Hj1v8BUYkUSpv3LGfxp43t9PM
+https://crambrulee.vercel.app/
 
 
 ## Local Deployment
