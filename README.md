@@ -20,7 +20,7 @@ Level of Achievement: Project Gemini
 Project Scope: To create a Web App that displays Users' personalised calendars, and intuitively suggests timeslots for User to begin working on new tasks, based on factors like task urgency and calendar availability.
 
 
-## Web Deployment (currently having database-related issues)
+## Web Deployment (currently having database-related timeout issues)
 
 https://crambrulee.vercel.app/
 
