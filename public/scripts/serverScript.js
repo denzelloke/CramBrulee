@@ -1,28 +1,31 @@
-//SERVER SCRIPT
+const mongoose = require('mongoose');
+require('dotenv').config(); // Ensure you have dotenv configured if running locally
 
-//database collection to connect to node.js
+// Use the environment variable for the MongoDB connection string
+const mongoUri = process.env.MONGODB_URI || "mongodb://localhost:27017/CramBrulee";
 
-const mongoose=require("mongoose")
-
-mongoose.connect("mongodb://localhost:27017/CramBrulee")
-.then(()=>{
-    console.log("mongoDB connected")
+mongoose.connect(mongoUri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
 })
-.catch((e)=>{
-    console.log("failed to connect")
+.then(() => {
+    console.log("MongoDB connected");
 })
+.catch((e) => {
+    console.log("Failed to connect to MongoDB", e);
+});
 
-const LogInSchema=new mongoose.Schema({
-    name:{
-        type:String,
-        required:true
+const LogInSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
     },
-    password:{
-        type:String,
-        required:true
+    password: {
+        type: String,
+        required: true
     }
-})
+});
 
-const LogInCollection=new mongoose.model("LogInCollection",LogInSchema)
+const LogInCollection = mongoose.model("LogInCollection", LogInSchema);
 
-module.exports=LogInCollection
+module.exports = LogInCollection;
