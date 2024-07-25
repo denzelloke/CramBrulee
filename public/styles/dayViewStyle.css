@@ -12,6 +12,7 @@
   border-radius: 5px;
   text-align: center;
 }
+
 .dropdown a{
   display: block;
   color: black;
@@ -19,6 +20,7 @@
   padding: 10px 15px;
   
 }
+
 .dropdown .content {
   display: none;
   position: absolute;
@@ -29,6 +31,7 @@
   border-radius: 5px;
   text-align: center;
 }
+
 .dropdown:hover .content {
   display: block;
 }
@@ -38,7 +41,6 @@
 .dropdown a:hover{
   background-color: rgb(240, 185, 88);
 }
-
 
 body {
   display: flex;
@@ -57,7 +59,6 @@ button {
   color: white;
 }
 
-
 #header {
   padding: 10px;
   color: #d36c6c;
@@ -69,7 +70,6 @@ button {
 #header button {
   background-color:#92a1d1;
 }
-
 
 /* anything more than 770px will wrap around, giving the grid effect*/
 #container {
@@ -90,56 +90,11 @@ button {
   display: flex;
   flex-wrap: wrap;
 }
-
-
-
-#calendar-container {
-  display: flex;
-  width: 100%;
-}
-
-#hours-column {
-  width: 150px;
-  height: 1000px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding-right: 10px;
-  padding-top: 10px;
-  color: #d36c6c;
-  font-size: 20px;
-  font-family: sans-serif;
-}
-
-#hours-column div {
-  height: 40px;
-  line-height: 40px;
-  border-bottom: 1px solid #d3d3d3;
-}
-.hour-line {
-  position: relative;
-  left: 0;
-  right: 0;
-  height: 1px;
-  color: #000;
-  background-color: #000; /* Change to black for visibility */
-}
-.hour-label {
-  position: absolute;
-  left: -40px;
-  width: 30px;
-  text-align: right;
-  font-size: 12px;
-  color: #666;
-}
-
-
-
 /* each day has a 100px grid with a 5px margin on each side = 110px. 7days = 770px */
 .day {
-  width: 1000px;
+  width: 100px;
   padding: 10px;
-  height: 1000px;
+  height: 100px;
   cursor: pointer;
   box-sizing: border-box;
   background-color: white;
