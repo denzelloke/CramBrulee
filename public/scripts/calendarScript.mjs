@@ -111,8 +111,13 @@ function deleteEvent() {
 }
 
 function suggestEvent() {
+  
   document.getElementById('suggestEventButton').addEventListener('click', async function() {
     suggestEventButton.disabled = true; // Disable the button so it doesnt explode my computer
+    let isSuggesting;
+    if (isSuggesting) return; // If already suggesting, do nothing
+    isSuggesting = true; 
+
     const userId = document.getElementById('userId').value;
   
     const response = await fetch('/getUserEvents', {
@@ -124,13 +129,14 @@ function suggestEvent() {
     });
   
     const events = await response.json();
-  
+
+    let eventTitle = $("#eventTitle").val();
     const suggestion = await fetch('/getEventSuggestion', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({ events })
+      body: JSON.stringify({ events, eventTitle })
     }).then(res => res.json());
   
     if (suggestion) {
@@ -140,6 +146,7 @@ function suggestEvent() {
       $("#deleteEventButton").hide();
       suggestEventButton.disabled = false; // enable the button after fields are populated
     }
+    isSuggesting = false;
   }); 
 } 
 

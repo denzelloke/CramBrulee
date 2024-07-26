@@ -105,9 +105,9 @@ app.post('/getUserEvents', async (req, res) => {
 });
 
 app.post('/getEventSuggestion', async (req, res) => {
-  const { events } = req.body;
+  const { events, eventTitle } = req.body;
   try {
-    const suggestion = await getEventSuggestions(events);
+    const suggestion = await getEventSuggestions(events, eventTitle);
     res.json(suggestion);
   } catch (error) {
     console.error('Error getting event suggestion:', error);
