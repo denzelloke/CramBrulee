@@ -1,3 +1,5 @@
+//calendarScript.mjs
+
 document.addEventListener('DOMContentLoaded', function() {
   let userIdElement = document.getElementById('userId');
   
@@ -110,6 +112,7 @@ function deleteEvent() {
 
 function suggestEvent() {
   document.getElementById('suggestEventButton').addEventListener('click', async function() {
+    suggestEventButton.disabled = true; // Disable the button so it doesnt explode my computer
     const userId = document.getElementById('userId').value;
   
     const response = await fetch('/getUserEvents', {
@@ -130,9 +133,16 @@ function suggestEvent() {
       body: JSON.stringify({ events })
     }).then(res => res.json());
   
-    alert('Suggested event: ' + suggestion);
-  });  
-}
+    if (suggestion) {
+      $("#eventTitle").val(suggestion.title);
+      $("#eventDate").val(suggestion.date);
+      $("#eventTime").val(suggestion.time);
+      $("#deleteEventButton").hide();
+      suggestEventButton.disabled = false; // enable the button after fields are populated
+    }
+  }); 
+} 
+
 
 function load() {
   console.log("Loading calendar..."); // Log to confirm function is called

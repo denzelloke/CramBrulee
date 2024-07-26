@@ -1,10 +1,11 @@
 // apiService.mjs
 import OpenAI from "openai";
 import dotenv from "dotenv";
-import readline from "readline";
+
+dotenv.config();
 
 const openai = new OpenAI({
-  //INSERT API KEY HERE
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
 const conversation = [];
@@ -25,7 +26,15 @@ async function getEventSuggestions(events) {
 
     const assistantMessage = response.choices[0].message.content.trim();
     console.log("Assistant:", assistantMessage);
-    return assistantMessage;
+
+    // Parse the assistant's message to extract title, date, and time
+    const [titleLine, dateLine, timeLine] = assistantMessage.split("\n");
+    const title = titleLine.replace("Suggested Event Title: ", "").trim();
+    const date = dateLine.replace("Suggested Event Date: ", "").trim();
+    const time = timeLine.replace("Suggested Event Time: ", "").trim();
+
+    return { title, date, time };
+
   } catch (error) {
     console.error("Error fetching event suggestions:", error);
     return "Error 3 getting suggestion";
