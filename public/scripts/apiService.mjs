@@ -18,10 +18,12 @@ async function getEventSuggestions(events, eventTitle) {
       prompt = `Based on the following events: ${JSON.stringify(events)}, 
     suggest a date and time for an task titled "${eventTitle}". 
     do take note of any due dates relating to this task. schedule the task at an appropriate time so as to meet the duedate or deadline.
-    Provide your answer in the following format. 
+    Provide your answer in the following format. DO NOT DEVIATE FROM THE FORMAT OR PROVIDE ANY ADDITIONAL INFORMATION.
     Suggested Event Title: 
-    Suggested Event Date: 
-    Suggested Event Time: `;
+    Suggested Event Start Date: 
+    Suggested Event Start Time: 
+    Suggested Event End Date: 
+    Suggested Event End Time: `;
 
       conversation.push({ role: "user", content: prompt });
 
@@ -34,20 +36,24 @@ async function getEventSuggestions(events, eventTitle) {
       console.log("Assistant:", assistantMessage);
 
       // Parse the assistant's message to extract title, date, and time
-      const [titleLine, dateLine, timeLine] = assistantMessage.split("\n");
+      const [titleLine, startDateLine, startTimeLine, endDateLine, endTimeLine] = assistantMessage.split("\n");
       const title = eventTitle;
-      const date = dateLine.replace("Suggested Event Date: ", "").trim();
-      const time = timeLine.replace("Suggested Event Time: ", "").trim();
-      return { title, date, time };
+      const startDate = startDateLine.replace("Suggested Event Start Date: ", "").trim();
+      const startTime = startTimeLine.replace("Suggested Event Start Time: ", "").trim();
+      const endDate = endDateLine.replace("Suggested Event End Date: ", "").trim();
+      const endTime = endTimeLine.replace("Suggested Event End Time: ", "").trim();
+      return { title, startDate, startTime , endDate , endTime };
 
     } else {
-      console.log(" no event title detected", eventTitle);
+      console.log(" NO event title detected", eventTitle);
       prompt = `Based on the following events: ${JSON.stringify(events)}, 
     suggest a new event for the user. 
-    Provide your answer in the following format.
+    Provide your answer in the following format.DO NOT DEVIATE FROM THE FORMAT OR PROVIDE ANY ADDITIONAL INFORMATION.
     Suggested Event Title: 
-    Suggested Event Date: 
-    Suggested Event Time: `;
+    Suggested Event Start Date: 
+    Suggested Event Start Time: 
+    Suggested Event End Date: 
+    Suggested Event End Time: `;
 
       conversation.push({ role: "user", content: prompt });
 
@@ -60,11 +66,14 @@ async function getEventSuggestions(events, eventTitle) {
       console.log("Assistant:", assistantMessage);
 
       // Parse the assistant's message to extract title, date, and time
-      const [titleLine, dateLine, timeLine] = assistantMessage.split("\n");
+      const [titleLine, startDateLine, startTimeLine, endDateLine, endTimeLine] = assistantMessage.split("\n");
       const title = titleLine.replace("Suggested Event Title: ", "").trim();
-      const date = dateLine.replace("Suggested Event Date: ", "").trim();
-      const time = timeLine.replace("Suggested Event Time: ", "").trim();
-      return { title, date, time };
+      const startDate = startDateLine.replace("Suggested Event Start Date: ", "").trim();
+      const startTime = startTimeLine.replace("Suggested Event Start Time: ", "").trim();
+      const endDate = endDateLine.replace("Suggested Event End Date: ", "").trim();
+      const endTime = endTimeLine.replace("Suggested Event End Time: ", "").trim();
+      return { title, startDate, startTime , endDate , endTime };
+
 
     }
   } catch (error) {

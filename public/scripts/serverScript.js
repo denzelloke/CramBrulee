@@ -42,6 +42,7 @@ const EventSchema = new mongoose.Schema({
     end: {
         type: String
     }
+    
 });
 
 const LogInCollection = new mongoose.model("LogInCollection", LogInSchema);

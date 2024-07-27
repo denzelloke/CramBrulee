@@ -33,21 +33,44 @@
                             <label for="eventTitle">Event Title:</label>
                             <input type="text" class="form-control" id="eventTitle" required>
                         </div>
-                        <div class="form-group">
-                            <label for="eventDate">Event Date:</label>
-                            <input type="date" class="form-control" id="eventDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="eventTime">Event Time:</label>
-                            <input type="time" class="form-control" id="eventTime" required>
-                        </div>
+                        <!-- Event Start -->
+        <div class="form-group">
+            <label>Event Start:</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="date" class="form-control" id="eventStartDate" required />
+                </div>
+                <div class="col-xs-6">
+                    <input type="time" class="form-control" id="eventStartTime" required />
+                </div>
+            </div>
+        </div>
+        
+        <!-- Event End -->
+        <div class="form-group">
+            <label>Event End:</label>
+            <div class="row">
+                <div class="col-xs-6">
+                    <input type="date" class="form-control" id="eventEndDate" required />
+                </div>
+                <div class="col-xs-6">
+                    <input type="time" class="form-control" id="eventEndTime" required />
+                </div>
+            </div>
+        </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button id="suggestEventButton" class="btn btn-info">Suggest Event</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal" id="saveEventButton">Save</button>
-                    <button type="button" class="btn btn-danger" id="deleteEventButton" style="display: none;">Delete</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <div class="row">
+                        <div class="col-xs-6 text-left">
+                            <button id="suggestEventButton" class="btn btn-info">Suggest Event</button>
+                        </div>
+                        <div class="col-xs-6 text-right">
+                            <button type="button" class="btn btn-success" id="saveEventButton">Save</button>
+                            <button type="button" class="btn btn-danger" id="deleteEventButton" style="display: none;">Delete</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

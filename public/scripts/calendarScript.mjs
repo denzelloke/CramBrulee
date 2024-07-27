@@ -26,8 +26,10 @@ let selectedEvent = null;
 function openModal(start) {
   selectedEvent = null;
   $("#eventTitle").val("");
-  $("#eventDate").val(moment(start).format("YYYY-MM-DD"));
-  $("#eventTime").val(moment(start).format("HH:mm"));
+  $("#eventStartDate").val(moment(start).format("YYYY-MM-DD"));
+  $("#eventStartTime").val(moment(start).format("HH:mm"));
+  $("#eventEndDate").val(moment(start).format("YYYY-MM-DD"));
+  $("#eventEndTime").val(moment(start).format("HH:mm"));
   $("#deleteEventButton").hide();
   $("#myModal").modal("toggle");
 }
@@ -39,15 +41,18 @@ function closeModal() {
 
 function saveEvent() {
   let title = $("#eventTitle").val();
-  let date = $("#eventDate").val();
-  let time = $("#eventTime").val();
+  let startDate = $("#eventStartDate").val();
+  let startTime = $("#eventStartTime").val();
+  let endDate = $("#eventEndDate").val();
+  let endTime = $("#eventEndTime").val();
 
-  if (title && date && time) {
+  if (title && startDate && startTime) {
     let newEvent = {
       userId: document.getElementById('userId').value,
       title: title,
-      start: `${date}T${time}`,
-      allDay: false,
+      start: `${startDate}T${startTime}`,
+      end: `${endDate}T${endTime}`,
+      
     };
 
     if (selectedEvent) {
@@ -61,7 +66,6 @@ function saveEvent() {
 
       // Add new event
       newEvent._id = Date.now();
-      console.log("new event id: ", newEvent._id);
       $("#calendar").fullCalendar("renderEvent", newEvent, true);
       events.push(newEvent);
     } else {
@@ -96,7 +100,6 @@ function deleteEvent() {
       if (response.ok) {
         // Remove event from calendar
         $("#calendar").fullCalendar("removeEvents", selectedEvent._id);
-        console.log("Event ID to delete:", selectedEvent._id);
 
         // Remove event from events array
         events = events.filter(event => event._id !== selectedEvent._id);
@@ -141,8 +144,10 @@ function suggestEvent() {
   
     if (suggestion) {
       $("#eventTitle").val(suggestion.title);
-      $("#eventDate").val(suggestion.date);
-      $("#eventTime").val(suggestion.time);
+      $("#eventStartDate").val(suggestion.startDate);
+      $("#eventStartTime").val(suggestion.startTime);
+      $("#eventEndDate").val(suggestion.endDate);
+      $("#eventEndTime").val(suggestion.endTime);
       $("#deleteEventButton").hide();
       suggestEventButton.disabled = false; // enable the button after fields are populated
     }
@@ -152,8 +157,7 @@ function suggestEvent() {
 
 
 function load() {
-  console.log("Loading calendar..."); // Log to confirm function is called
-
+  
   $("#calendar").fullCalendar({
     header: {
       left: "prev,next today",
@@ -168,8 +172,10 @@ function load() {
     eventClick: function (event) {
       selectedEvent = event;
       $("#eventTitle").val(event.title);
-      $("#eventDate").val(moment(event.start).format("YYYY-MM-DD"));
-      $("#eventTime").val(moment(event.start).format("HH:mm"));
+      $("#eventStartDate").val(moment(event.start).format("YYYY-MM-DD"));
+      $("#eventStartTime").val(moment(event.start).format("HH:mm"));
+      $("#eventEndDate").val(moment(event.end).format("YYYY-MM-DD"));
+      $("#eventEndTime").val(moment(event.end).format("HH:mm"));
       $("#deleteEventButton").show();
       $("#myModal").modal("toggle");
     },
@@ -182,8 +188,6 @@ function load() {
     },
     events: events,
   });
-
-  console.log("Calendar loaded with events:", events); // Log events to confirm they are loaded
 }
 
 
