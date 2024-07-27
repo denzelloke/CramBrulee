@@ -2,6 +2,8 @@
 
 //database collection to connect to node.js
 
+require('dotenv').config();
+
 const mongoose=require("mongoose")
 
 mongoose.connect("mongodb://localhost:27017/CramBrulee")
@@ -39,7 +41,10 @@ const EventSchema = new mongoose.Schema({
     },
     end: {
         type: String
-    }
+    },
+    color: {
+        type: String
+    },
 });
 
 const LogInCollection = new mongoose.model("LogInCollection", LogInSchema);
