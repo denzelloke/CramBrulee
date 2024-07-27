@@ -89,8 +89,26 @@ function saveEvent() {
       color: color,
     };
 
-    if (selectedEvent) {
+    if (selectedEvent) { //IF SELECT EXISTING EVENT
       
+      // Remove event from server
+    fetch(`/events/${selectedEvent._id}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (response.ok) {
+          // Remove event from calendar
+          $("#calendar").fullCalendar("removeEvents", selectedEvent._id);
+
+          // Remove event from events array
+          events = events.filter((event) => event._id !== selectedEvent._id);
+
+        } else {
+          console.error("Error deleting event");
+        }
+      })
+      .catch((error) => console.error("Error deleting event:", error));
+
       // Update existing event
       selectedEvent.title = title;
       selectedEvent.start = newEvent.start;
@@ -99,22 +117,23 @@ function saveEvent() {
       selectedEvent.allDay = newEvent.allDay;
 
       // Update existing event
-      fetch(`/events/${selectedEvent._id}`, {
-        method: 'PUT',
+       // Add new event to server
+       fetch("/events", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(newEvent)
+        body: JSON.stringify(newEvent),
       })
-      .then(response => response.json())
-      .then(data => {
-        
-        $("#calendar").fullCalendar("updateEvent", selectedEvent);
-        events = events.map(event => event._id === selectedEvent._id ? selectedEvent : event);
-      })
-      .catch(error => console.error("Error updating event:", error));
+        .then((response) => response.json())
+        .then((data) => {
+          newEvent._id = data._id;
+          $("#calendar").fullCalendar("renderEvent", newEvent, true);
+          events.push(newEvent);
+        })
+        .catch((error) => console.error("Error saving event:", error));
       
-    } else {
+    } else { //IF ADDING NEW EVENT
       // Add new event to server
       fetch("/events", {
         method: "POST",
