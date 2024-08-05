@@ -14,8 +14,10 @@ Project Gemini
 ### Project Scope: 
 To create a Web App that displays users' personalised calendars, and intuitively suggests timeslots for users to begin working on new tasks, based on factors like task urgency and calendar availability.
 
+
 ## Tech Stack 
 We used Javascript for our frontend, Express and Node.js for our backend, and MongoDB for the database to store information required for user authentication.
+
 
 ## Local Deployment
 
@@ -40,6 +42,7 @@ Run the application using the following terminal command: nodemon index.mjs (if 
 Open a web browser and go to http://localhost:3000. You should see the login page.
 You will be able to create a new user using the signup form, once a new user has been created you will be directed to the login page. Users will only be permitted to log into the home page after logging in with the correct credentials. Different messages have been implemented to feedback different types of incorrect login credentials.
 At the home page, select different views to navigate between them, and click to add an event.
+
 
 ## Milestone Progress:
 - Milestone 1: Created Home Page, Login form, and Signup form.
