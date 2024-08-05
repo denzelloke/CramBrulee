@@ -2,14 +2,17 @@
 
 ## General Details
 
-### Documentation: https://docs.google.com/document/d/1NJYrrDUmPWrZGAuYLO0DFdPRINOexmdeYmMg_YjxGRM/edit?usp=drive_link (this document)
+### Documentation: 
+https://docs.google.com/document/d/1NJYrrDUmPWrZGAuYLO0DFdPRINOexmdeYmMg_YjxGRM/edit?usp=drive_link (this document)
 
 ### Description:
 This app is intended to be a calendar app that intuitively helps you plan your tasks based on your calendar availability and task urgency. 
 
-### Proposed Level of Achievement: Project Gemini
+### Proposed Level of Achievement: 
+Project Gemini
 
-### Project Scope: To create a Web App that displays users' personalised calendars, and intuitively suggests timeslots for users to begin working on new tasks, based on factors like task urgency and calendar availability.
+### Project Scope: 
+To create a Web App that displays users' personalised calendars, and intuitively suggests timeslots for users to begin working on new tasks, based on factors like task urgency and calendar availability.
 
 ## Tech Stack 
 We used Javascript for our frontend, Express and Node.js for our backend, and MongoDB for the database to store information required for user authentication.
